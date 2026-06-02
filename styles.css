@@ -88,7 +88,7 @@ h2 { font-size: 1.1rem; color: #aaaaaa; }
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.8rem 1rem;
+  padding: 0.8rem 0.5rem;
   border: 1px solid var(--border-color);
   background-color: transparent;
   color: var(--text-color);
@@ -107,7 +107,7 @@ h2 { font-size: 1.1rem; color: #aaaaaa; }
 
 .button-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
   gap: 0.5rem;
   margin-bottom: 1.5rem;
 }

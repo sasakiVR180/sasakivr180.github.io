@@ -11,17 +11,15 @@ async function fetchStatus() {
     const statusData = JSON.parse(statusContent);
 
     const indicatorEl = document.getElementById('status-indicator');
-    const queueEl = document.getElementById('queue-text');
 
     if (statusData.isOpen) {
-      indicatorEl.textContent = "🟢 STATUS: OPEN / REGULAR REQUESTS AVAILABLE";
+      indicatorEl.textContent = `🟢 COMMISSIONS: OPEN (Queue: ${statusData.currentQueue} / ${statusData.maxQueue})`;
       indicatorEl.style.color = "var(--accent-color)";
     } else {
-      indicatorEl.textContent = "🔴 STATUS: CLOSED / NO NEW REQUESTS";
+      indicatorEl.textContent = `🔴 COMMISSIONS: CLOSED (Queue: ${statusData.currentQueue} / ${statusData.maxQueue})`;
       indicatorEl.style.color = "#ff5555";
     }
 
-    queueEl.textContent = `Queue: ${statusData.currentQueue} / ${statusData.maxQueue} Slots Filled`;
   } catch (error) {
     console.error("ステータスの取得に失敗しました:", error);
   }
