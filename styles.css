@@ -27,7 +27,7 @@ body {
   width: 100%;
   max-width: 650px;
   border: 1px solid var(--border-color);
-  padding: 3rem 2rem;
+  padding: 3rem 2rem 5rem 2rem;
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
@@ -99,6 +99,38 @@ h2 { font-size: 1.1rem; color: #aaaaaa; }
   text-align: center;
 }
 
+/* -------------------------------------
+   Supporters Ticker
+   ------------------------------------- */
+
+.ticker-wrap {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  background: var(--bg-color);
+  border-top: 1px solid var(--border-color);
+  padding: 0.5rem 0;
+  white-space: nowrap;
+  box-sizing: border-box;
+  z-index: 1000;
+}
+
+.ticker {
+  display: inline-block;
+  padding-left: 100%;
+  animation: ticker 120s linear infinite;
+  font-family: monospace;
+  color: #666;
+  font-size: 0.8rem;
+}
+
+@keyframes ticker {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+
 .btn:hover, .link-btn:hover {
   background-color: var(--hover-bg);
   border-color: #aaaaaa;
@@ -132,4 +164,41 @@ h2 { font-size: 1.1rem; color: #aaaaaa; }
 .btn-back {
   margin-top: 1.5rem;
   width: 100%;
+}
+
+/* -------------------------------------
+   Responsive / Mobile adjustments
+   ------------------------------------- */
+@media (max-width: 600px) {
+  body {
+    padding: 0; /* Remove body padding on small screens */
+  }
+  
+  .container {
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    margin-top: 0;
+    padding: 2rem 1rem 5rem 1rem; /* Adjust padding, keep bottom padding for ticker */
+    max-width: 100%;
+  }
+
+  h1 { font-size: 1.3rem; }
+  h2 { font-size: 1rem; }
+  
+  .bio { font-size: 0.85rem; }
+  
+  .button-grid {
+    /* Force a 2-column layout on mobile to keep buttons readable */
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .btn, .link-btn {
+    padding: 0.8rem 0.2rem;
+    font-size: 0.8rem; /* Slightly smaller text */
+  }
+  
+  .ticker {
+    font-size: 0.75rem; /* Smaller ticker text on mobile */
+  }
 }
