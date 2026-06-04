@@ -33,7 +33,7 @@ async function fetchSupporters() {
     const res = await fetch('supporters/fanbox_supporter.txt');
     if (res.ok) {
       const text = await res.text();
-      const lines = text.split(/\r?\n/).map(l => l.trim());
+      const lines = text.split(/\r?\n/).map(l => l.trim()).filter(l => l.length > 0);
       for (let i = 0; i < lines.length; i += 3) {
         if (lines[i] && lines[i] !== '名前') {
           supporters.add(lines[i]);
@@ -83,7 +83,17 @@ async function fetchSupporters() {
       const j = Math.floor(Math.random() * (i + 1));
       [arr[i], arr[j]] = [arr[j], arr[i]];
     }
-    const baseText = "/// SPECIAL THANKS : " + arr.join(" /// ") + " ";
+
+    // Insert "Thank you for your support!" periodically
+    const finalArr = [];
+    for (let i = 0; i < arr.length; i++) {
+      finalArr.push(arr[i]);
+      if ((i + 1) % 15 === 0) {
+        finalArr.push("THANK YOU FOR YOUR SUPPORT!");
+      }
+    }
+
+    const baseText = "/// " + finalArr.join(" /// ") + " ";
     
     // Repeat twice to avoid sudden cut-offs, but not too many times.
     tickerEl.textContent = baseText.repeat(2); 
