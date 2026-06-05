@@ -29,6 +29,7 @@ body {
   border: 1px solid var(--border-color);
   padding: 3rem 2rem 5rem 2rem;
   margin-top: 2rem;
+  margin-bottom: 4rem;
   display: flex;
   flex-direction: column;
   gap: 2.5rem;
@@ -175,10 +176,9 @@ h2 { font-size: 1.1rem; color: #aaaaaa; }
   }
   
   .container {
-    border-left: none;
-    border-right: none;
-    border-top: none;
+    border: none;
     margin-top: 0;
+    margin-bottom: 2rem;
     padding: 2rem 1rem 5rem 1rem; /* Adjust padding, keep bottom padding for ticker */
     max-width: 100%;
   }
